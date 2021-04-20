@@ -2,8 +2,7 @@
 #include <stdlib.h>
 
 
-//Answer of the first question in Homework
-// 040190625 - Ozan Demirel
+
 int main()
 {
 	int i = 0;
