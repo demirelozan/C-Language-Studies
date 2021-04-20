@@ -1,7 +1,6 @@
 #include <stdio.h>
 
 
-//040190625 - Ozan Demirel
 
 int Recursive(int);
  
@@ -14,7 +13,7 @@ int main()
  	
 	if( input >= 1)
 	{
-	// sadece n degerini göstermek yerine n dahil n e kadar olan deðerleri göstermek istedim, for döngüsü bunun için. for döngüsünü kaldirinca, gözüken deger sadece n. deger olur.
+
     	for ( n = 1 ; n <= input ; n++ )
 		{
 		printf("%d. of the sequence is ", n );
