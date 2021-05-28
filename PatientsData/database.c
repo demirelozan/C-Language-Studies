@@ -25,7 +25,7 @@ Patient* getPatients()
 {
 	return patients;
 }
-int getPatientNumber()
+int getPatientsNumber()
 {
 	return patientIndex;
 }
@@ -47,16 +47,15 @@ int readPatients()
 			}
 		}else{
 		//	fgets(lineBuffer, 200, dbFile);
+			int birthday;
 			int id;
 			char nameBuffer[50];
-			char surnameBuffer[50];
-			char birthdayBuffer[50];
-			char emailBuffer[100];
+			char emailBuffer[50];
 			char departmentBuffer[50];
-			int check = fscanf(dbFile, "%d %s %s %s %s %s", &id, nameBuffer, surnameBuffer, birthdayBuffer, emailBuffer, departmentBuffer);
-			if(check == 6)
+			int check = fscanf(dbFile, "%d %s %s %s %d", &id, nameBuffer, emailBuffer, departmentBuffer, &birthday);
+			if(check == 5)
 			{
-				Patient patient = createPatient(nameBuffer, surnameBuffer, birthdayBuffer, emailBuffer, departmentBuffer);
+				Patient patient = createPatient(birthday, nameBuffer, emailBuffer, departmentBuffer);
 				patientIndex++;
 				//printf("Adding to %d\n", customerIndex);
 				patients[patientIndex] = patient;
@@ -75,18 +74,19 @@ void updateDatabase()
 	{
 
 		Patient patient = patients[i];
-		fprintf(dbFile, "%d %s %s %s %s %s\n", patient.id, patient.name, patient.surname, patient.birthday, patient.email, patient.department);
+		fprintf(dbFile, "%d %d %s %s %s\n", patient.id, patient.name, patient.email, patient.department, patient.birthday);
 	}
 }
-int addPatient(char* name, char* surname, char* birthday, char* email, char* department)
+int addPatient(int birthday, char* name, char* email, char* department)
 {
 	//Customer newCustomer = createCustomer(age, name, email);
-	Patient newPatient = createPatient(name, surname, birthday, email, department);
+	Patient newPatient = createPatient(birthday, name, email, department);
 	newPatient.id = lastId;
 	lastId++;
 	patientIndex++;
 	printf("Adding to %d\n", patientIndex);
 	patients[patientIndex] = newPatient;
 	updateDatabase();
+	
 }
 
