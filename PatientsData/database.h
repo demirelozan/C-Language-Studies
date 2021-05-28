@@ -8,6 +8,7 @@ static FILE* dbFile;
 static Patient patients[100];
 static int patientIndex = -1;
 static int lastId = 0;
+static int deletedPatients = 0;
 
 int initDatabase();
 Patient* getPatients();
@@ -18,7 +19,7 @@ void closeDatabase();
 //CRUD
 int getPatientNumber();
 int readPatients();
-int addPatient(int birthday, char* name, char* email, char* department);
+int addPatient(char* name, char* surname, char* birthday, char* email, char* department);
 
 
 #endif
