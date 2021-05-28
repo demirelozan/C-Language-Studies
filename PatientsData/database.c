@@ -8,7 +8,6 @@ int initDatabase()
 		return -1;
 	}
 	readPatients();
-	printf("Ends %d\n", patientIndex);
 	return 0;
 }
 
@@ -23,11 +22,8 @@ void closeDatabase()
 
 Patient* getPatients()
 {
+	updateDatabase();
 	return patients;
-}
-int getPatientsNumber()
-{
-	return patientIndex;
 }
 int readPatients()
 {
@@ -47,15 +43,16 @@ int readPatients()
 			}
 		}else{
 		//	fgets(lineBuffer, 200, dbFile);
-			int birthday;
 			int id;
 			char nameBuffer[50];
-			char emailBuffer[50];
+			char surnameBuffer[50];
+			char birthdayBuffer[50];
+			char emailBuffer[100];
 			char departmentBuffer[50];
-			int check = fscanf(dbFile, "%d %s %s %s %d", &id, nameBuffer, emailBuffer, departmentBuffer, &birthday);
-			if(check == 5)
+			int check = fscanf(dbFile, "%d %s %s %s %s %s", &id, nameBuffer, surnameBuffer, birthdayBuffer, emailBuffer, departmentBuffer);
+			if(check == 6)
 			{
-				Patient patient = createPatient(birthday, nameBuffer, emailBuffer, departmentBuffer);
+				Patient patient = createPatient(nameBuffer, surnameBuffer, birthdayBuffer, emailBuffer, departmentBuffer);
 				patientIndex++;
 				//printf("Adding to %d\n", customerIndex);
 				patients[patientIndex] = patient;
@@ -63,6 +60,11 @@ int readPatients()
 		}
 		lineNumber++;
 	}
+}
+int getPatientNumber()
+{
+	//printf("deletedPatients: %d\n", deletedPatients);
+	return (patientIndex+1- deletedPatients);
 }
 void updateDatabase()
 {
@@ -74,19 +76,17 @@ void updateDatabase()
 	{
 
 		Patient patient = patients[i];
-		fprintf(dbFile, "%d %d %s %s %s\n", patient.id, patient.name, patient.email, patient.department, patient.birthday);
+		fprintf(dbFile, "%d %s %s %s %s %s\n", patient.id, patient.name, patient.surname, patient.birthday, patient.email, patient.department);
 	}
 }
-int addPatient(int birthday, char* name, char* email, char* department)
+int addPatient(char* name, char* surname, char* birthday, char* email, char* department)
 {
 	//Customer newCustomer = createCustomer(age, name, email);
-	Patient newPatient = createPatient(birthday, name, email, department);
+	Patient newPatient = createPatient(name, surname, birthday, email, department);
 	newPatient.id = lastId;
 	lastId++;
 	patientIndex++;
-	printf("Adding to %d\n", patientIndex);
 	patients[patientIndex] = newPatient;
 	updateDatabase();
-	
 }
 
