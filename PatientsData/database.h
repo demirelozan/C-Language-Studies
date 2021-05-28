@@ -18,7 +18,7 @@ void closeDatabase();
 //CRUD
 int getPatientNumber();
 int readPatients();
-int addPatient(char* name, char* surname, char* birthday, char* email, char* department);
+int addPatient(int birthday, char* name, char* email, char* department);
 
 
 #endif
