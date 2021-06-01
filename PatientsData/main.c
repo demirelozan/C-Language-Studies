@@ -51,7 +51,7 @@ int main()
 
 int userInterface(int *userSel)
 {
-	//printf("bURAYADIM\n");
+	//printf("HERE\n");
 	int userSelection;
 	userSelection = *userSel;
 	Patient* patients = getPatients();
@@ -186,7 +186,7 @@ int userInterface(int *userSel)
 				//	printf("\npatients number: %d \n", getPatientNumber());
 						patients[getPatientNumber()-1 -deletedPatients] = patients[getPatientNumber()-deletedPatients];
 					
-					//updateDatabase();
+					//updateDatabase
 					printf("0: Exit | 1: Show All Records | 2: Search Patient | 3: New Patient \n");
 					printf("Please select an option: ");
 					scanf("%d", &userSelection);
@@ -196,7 +196,7 @@ int userInterface(int *userSel)
 			{
 				addPatient(userName, userSurname, userBirthday, userEmail, userDepartment);			
 				patientIndex++;
-				//updateDatabase();
+				//updateDatabase
 				printf("0: Exit | 1: Show All Records | 2: Search Patient | 3: New Patient \n");
 				printf("Please select an option: ");
 				scanf("%d", &userSelection);
