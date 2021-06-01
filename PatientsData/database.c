@@ -42,7 +42,6 @@ int readPatients()
 				lastId = 0; //Couldn't read. Possivle empty file
 			}
 		}else{
-		//	fgets(lineBuffer, 200, dbFile);
 			int id;
 			char nameBuffer[50];
 			char surnameBuffer[50];
@@ -54,7 +53,6 @@ int readPatients()
 			{
 				Patient patient = createPatient(nameBuffer, surnameBuffer, birthdayBuffer, emailBuffer, departmentBuffer);
 				patientIndex++;
-				//printf("Adding to %d\n", customerIndex);
 				patients[patientIndex] = patient;
 			}
 		}
@@ -81,7 +79,6 @@ void updateDatabase()
 }
 int addPatient(char* name, char* surname, char* birthday, char* email, char* department)
 {
-	//Customer newCustomer = createCustomer(age, name, email);
 	Patient newPatient = createPatient(name, surname, birthday, email, department);
 	newPatient.id = lastId;
 	lastId++;
