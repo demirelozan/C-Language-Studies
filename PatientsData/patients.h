@@ -1,5 +1,5 @@
-#ifndef CUSTOMER_H
-#define CUSTOMER_H
+#ifndef PATIENTS_H
+#define PATIENTS_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,7 +14,6 @@ struct PatientStruct
 	char birthday[50];
 	char email[100];
 	char department[50];
-	//int orders[10];
 };
 
 Patient createPatient(char* name, char* surname, char* birthday, char* email, char* department);
