@@ -9,9 +9,9 @@ double df(double);
 int NewtonRaphson(double (*f)(double x), double (*df)(double x), double errTol, double xInit);
 int main()
 {
-	double errTol = 0.01f;
-//	printf("Enter Error Tolerance: ");
-//	scanf("%f", &errTol);
+	double errTol;
+	printf("Enter Error Tolerance: ");
+	scanf("%f", &errTol);
 	
 	
 	double xInit = 1;
