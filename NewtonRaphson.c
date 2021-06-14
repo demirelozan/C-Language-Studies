@@ -1,5 +1,3 @@
-//040190625 - Ozan Demirel
-
 #include <stdio.h>
 #include <math.h>
 
@@ -8,7 +6,6 @@
 double f(double);
 double df(double);
 
-//I have calculated the Derivative of the function on a different function(df), so I added a new variable to NewtonRaphson(double (*df)(double x))
 int NewtonRaphson(double (*f)(double x), double (*df)(double x), double errTol, double xInit);
 int main()
 {
@@ -17,7 +14,6 @@ int main()
 //	scanf("%f", &errTol);
 	
 	
-	//Initial value,x0 is 1; as given.
 	double xInit = 1;
 	
 	NewtonRaphson(f,df,errTol,xInit);
